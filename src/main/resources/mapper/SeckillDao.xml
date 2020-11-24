@@ -21,7 +21,7 @@
     </update>
 
     <!--根据id查询秒杀的商品信息-->
-    <select id="queryById" resultType="Seckill" parameterType="long">
+    <select id="queryById" resultType="org.seckill.entity.Seckill" parameterType="long">
         SELECT *
         FROM seckill
         WHERE seckill_id = #{seckillId}
@@ -31,7 +31,7 @@
     List<Seckill> queryAll(int off, int limit);
     parameterType为多个可以不给
     按照降序对记录进行排序，可以使用 DESC 关键字-->
-    <select id="queryAll" resultType="Seckill">
+    <select id="queryAll" resultType="org.seckill.entity.Seckill">
         SELECT *
         FROM seckill
         ORDER BY create_time DESC
