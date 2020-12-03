@@ -86,7 +86,7 @@ public class SeckillServiceImpl implements SeckillService {
      * 2.保证事务方法的执行时间尽可能短，不要穿插其他网络操作RPC/Http请求，或者剥离到事务方法外
      * 3.不是所有的方法都需要事务，如只有一条修改操作
      */
-    public SeckillExecution executeSeckill(long seckillId, long userPhone, String md5) throws SeckillException, SeckillCloseException, RepeatKillException {
+    public SeckillExecution executeSeckill(long seckillId, long userPhone, String md5) throws SeckillException {
         //将用户传来的md5与内部md5进行比较
         if(md5 == null || !md5.equals(getMD5(seckillId))){
             throw  new SeckillException("seckill data rewrite!");
