@@ -33,7 +33,7 @@ public class SeckillController {
     @Autowired
     SeckillService seckillService;
 
-    @RequestMapping(name="/list",method = RequestMethod.GET)
+    @RequestMapping(value="/list",method = RequestMethod.GET)
     public ModelAndView list(){
         //获取列表页
         List<Seckill> list = seckillService.getSeckillList();
