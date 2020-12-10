@@ -76,6 +76,7 @@ var seckill = {
         }
     },
 
+    //获取秒杀地址，执行秒杀
     handlerSeckill: function (seckillId, node) {
         //获取秒杀地址,控制显示器,执行秒杀
         node.hide().html('<button class="btn btn-primary btn-lg" id="killBtn">开始秒杀</button>');
@@ -104,11 +105,12 @@ var seckill = {
                                 //显示秒杀结果
                                 node.html('<span class="label label-success">' + stateInfo + '</span>');
                             }else{
-                                console.log("my")
+                                var error = result['error'];
+                                node.html('<span class="label label-danger">' + error + '</span>');
                             }
                         });
                     });
-                    node.show();
+                    node.show();//显示
                 } else {
                     //未开启秒杀(浏览器计时偏差)
                     var now = exposer['now'];
@@ -138,7 +140,7 @@ var seckill = {
                 seckillBox.html(format);
             }).on('finish.countdown', function () {
                 //时间完成后回调事件
-                //获取秒杀地址,控制现实逻辑,执行秒杀
+                //获取秒杀地址,控制显示逻辑,执行秒杀
                 console.log('______fininsh.countdown');
                 seckill.handlerSeckill(seckillId, seckillBox);
             });

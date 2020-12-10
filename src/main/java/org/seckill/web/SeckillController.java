@@ -107,14 +107,14 @@ public class SeckillController {
             return new SeckillResult<>(true, execution);
         }catch (RepeatKillException e1){
             SeckillExecution execution = new SeckillExecution(seckillId, SeckillStatEnum.REPEAT_KILL);
-            return new SeckillResult<>(false,execution);
+            return new SeckillResult<>(true,execution);
         }catch (SeckillCloseException e2){
             SeckillExecution execution = new SeckillExecution(seckillId, SeckillStatEnum.END);
-            return new SeckillResult<>(false,execution);
+            return new SeckillResult<>(true,execution);
         }catch (Exception e){
             logger.error(e.getMessage(),e);
             SeckillExecution execution = new SeckillExecution(seckillId, SeckillStatEnum.INNER_ERROR);
-            return new SeckillResult<>(false,execution);
+            return new SeckillResult<>(true,execution);
         }
 
     }
