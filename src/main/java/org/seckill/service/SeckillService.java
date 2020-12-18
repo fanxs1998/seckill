@@ -46,4 +46,19 @@ public interface SeckillService {
      * @param md5
      */
     SeckillExecution executeSeckill(long seckillId, long userPhone, String md5) throws SeckillException, SeckillCloseException, RepeatKillException;
+
+
+    /**
+     * 执行秒杀操作 by 存储过程
+     *
+     * 原本没有调用存储过程的执行秒杀操作之所以要抛出RuntimException，
+     * 是为了让Spring事务管理器能够在秒杀不成功的时候进行回滚操作。
+     * 而现在我们使用了存储过程，有关事务的提交或回滚已经在procedure里完成了,故不需抛出异常
+     * @param seckillId
+     * @param userPhone
+     * @param md5
+     * @return
+     */
+    SeckillExecution executeSeckillProcedure(long seckillId, long userPhone, String md5) ;
+
 }
